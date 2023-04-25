@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  db:
+    build:
+      context: ./
+      dockerfile: mysql_db/Dockerfile
+    ports:
+      - "3036:3036"
+    environment:
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: myuserpassword
+      MYSQL_ROOT_PASSWORD: mypassword      
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u${MYSQL_USER} -p${MYSQL_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  app:
+    build:
+      context: ./
+      dockerfile: streaming-data-ingestion/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+        

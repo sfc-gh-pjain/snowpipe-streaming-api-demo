@@ -6,7 +6,7 @@
 
 2. Some familiarity with java programming will help to understand the demo better
 
-3. We are using community version of mysql server for demo purpose only, user and password are simple but in actaul production you can use your own strong authentication guidelines
+3. We are using community version of mysql server for demo purpose only, user and password are simple but in production you should use your own strong authentication guidelines
 
 
 ## How to run this demo

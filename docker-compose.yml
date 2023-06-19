@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: mysql_db/Dockerfile
     ports:
-      - "3036:3036"
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: mydb
       MYSQL_USER: myuser
